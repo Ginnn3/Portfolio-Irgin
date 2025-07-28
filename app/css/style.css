@@ -125,8 +125,7 @@ span {
   width: 300px;
   height: 400px;
   perspective: 1000px;
-  margin-top: 10%;
-  margin-left: 13%;
+  margin: auto;
 }
 
 .flip-card-inner {
