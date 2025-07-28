@@ -5,16 +5,18 @@
   text-decoration: none;
   list-style: none;
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
+  font-family: "fredoka one", cursive;
 }
 
 :root {
   --text-color: #fff;
-  --bg-color: #1b1f24;
   --second-bg-color: #22282f;
   --main-color: #ffffff;
   --other-color: #c3cad5;
-
+  --bg-color: #0c1c3a;
+  --card-bg: #11224d;
+  --main-color: #00c3ff;
+  --font-color: #ffffff;
   --h1-font: 4.5rem;
   --h2-font: 2.9rem;
   --p-font: 1rem;
@@ -82,6 +84,23 @@ span {
   z-index: 10001;
 }
 
+.neon-flash-blue {
+  animation: flashNeonBlue 3s infinite steps(2, start);
+  color: #00bfff;
+  font-weight: bold;
+}
+
+@keyframes flashNeonBlue {
+  0%,
+  49% {
+    opacity: 0.3;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
 .h-btn {
   display: inline-block;
   padding: 11px 26px;
@@ -96,11 +115,107 @@ span {
 
 .h-btn:hover {
   background: var(--main-color);
-  color: var(--bg-color);
+  color: var(--font-color);
   box-shadow: 0 0 20px var(--main-color);
   transform: scale(1.1);
 }
 
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin-top: 10%;
+  margin-left: 13%;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  background-color: #0078d4;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.skill-bars {
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.skill {
+  margin-bottom: 0.75rem;
+}
+
+.battery-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.battery-bar {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 2px;
+  position: relative;
+  background-color: transparent;
+}
+
+.battery-cell {
+  width: 16px;
+  height: 12px;
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.battery-cell.filled {
+  background-color: white;
+}
+
+.battery-tip {
+  width: 4px;
+  height: 8px;
+  background-color: white;
+  margin-left: 4px;
+  border-radius: 1px;
+}
 section {
   padding: 110px 16% 90px;
 }
