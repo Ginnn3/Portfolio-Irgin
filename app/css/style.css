@@ -115,7 +115,7 @@ span {
 
 .h-btn:hover {
   background: var(--main-color);
-  color: var(--font-color);
+  color: var(--bg-color);
   box-shadow: 0 0 20px var(--main-color);
   transform: scale(1.1);
 }
@@ -222,7 +222,7 @@ section {
 .hero {
   height: 100vh;
   width: 100%;
-  background: url(../img/background-1.png);
+  background: url(../img/bg-portofolio.png);
   background-size: cover;
   display: flex;
   align-items: center;
@@ -593,15 +593,21 @@ form .send-btn:hover {
 }
 
 .scroll-top {
-  background-color: var(--main-color);
+  display: none;
   position: fixed;
-  right: 30px;
-  border-radius: 5px;
-  color: #000;
   bottom: 30px;
-  padding: 10px 15px;
+  right: 30px;
+  background-color: #00bfff;
+  color: white;
+  padding: 8px;
+  border-radius: 10%;
+  font-size: 18px;
   cursor: pointer;
-  transition: all 0.5s ease;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+.scroll-top.show {
+  display: block;
 }
 
 .scroll-top:hover {
