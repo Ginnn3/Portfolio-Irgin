@@ -120,101 +120,6 @@ span {
   transform: scale(1.1);
 }
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 400px;
-  perspective: 1000px;
-  margin: auto;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.flip-card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.flip-card-back {
-  background-color: #0078d4;
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-.skill-bars {
-  margin-top: 1rem;
-  width: 80%;
-}
-
-.skill {
-  margin-bottom: 0.75rem;
-}
-
-.battery-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.battery-bar {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  border: 2px solid white;
-  border-radius: 4px;
-  padding: 2px;
-  position: relative;
-  background-color: transparent;
-}
-
-.battery-cell {
-  width: 16px;
-  height: 12px;
-  border: 1px solid white;
-  background-color: transparent;
-  border-radius: 2px;
-}
-
-.battery-cell.filled {
-  background-color: white;
-}
-
-.battery-tip {
-  width: 4px;
-  height: 8px;
-  background-color: white;
-  margin-left: 4px;
-  border-radius: 1px;
-}
 section {
   padding: 110px 16% 90px;
 }
@@ -321,12 +226,181 @@ header.sticky {
   gap: 4rem;
 }
 
-.about-img img {
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
   width: 100%;
-  height: 530px;
-  max-width: 530px;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  box-shadow: 0 0 20px var(--main-color);
+}
+
+.flip-card-back {
+  background-color: var(--main-color);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  margin: auto;
+  box-shadow: 0 10px 30px var(--main-color);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  animation: cardBlink 1.5s ease-in-out infinite;
+  animation-play-state: running;
+  border-radius: 20px;
+}
+
+.idcard-container:hover .flip-card {
+  transform: translateY(20px);
+  animation-play-state: paused;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.idcard-container:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 1ms ease;
+}
+
+@keyframes cardBlink {
+  0% {
+    box-shadow: 0 8px 40px white;
+    transform: translateY(0);
+    filter: none;
+    opacity: 1;
+  }
+  25% {
+    box-shadow: 0 8px 45px white;
+    transform: translateY(1px);
+    filter: brightness(1.03) saturate(1.02);
+    opacity: 0.99;
+  }
+  50% {
+    box-shadow: 0 8px 60px white;
+    transform: translateY(0);
+    filter: brightness(1.06) saturate(1.05);
+    opacity: 1;
+  }
+  75% {
+    box-shadow: 0 8px 50px white;
+    transform: translateY(1px);
+    filter: brightness(1.03) saturate(1.02);
+    opacity: 0.99;
+  }
+  100% {
+    box-shadow: 0 8px 40px white;
+    transform: translateY(0);
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@keyframes cardFlashOpacity {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 10;
+  }
+}
+
+.idcard-container:active .flip-card,
+.flip-card:active {
+  animation-play-state: paused;
+}
+
+.skill-bars {
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.skill {
+  margin-bottom: 0.75rem;
+}
+
+.battery-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.battery-bar {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 2px;
+  position: relative;
+  background-color: transparent;
+}
+
+.battery-cell {
+  width: 16px;
+  height: 12px;
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.battery-cell.filled {
+  background-color: white;
+}
+
+.battery-tip {
+  width: 4px;
+  height: 8px;
+  background-color: white;
+  margin-left: 4px;
+  border-radius: 1px;
 }
 
 .about-text h2 {
