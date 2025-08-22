@@ -1,5 +1,5 @@
 const text =
-  "Saya merupakan freshgraduate dari Universitas Mercu Buana, S1 Teknik Informatika.\nSaat ini saya berdomisili di Kota Tangerang, dekat kawasan Alam Sutera.";
+  "\nSaya merupakan freshgraduate dari Universitas Mercu Buana, \nS1 Teknik Informatika. Saat ini saya berdomisili di \nKota Tangerang, dekat kawasan Alam Sutera.";
 const target = document.getElementById("typing-text");
 
 function typeWriterLoop() {
@@ -14,7 +14,7 @@ function typeWriterLoop() {
       index++;
       setTimeout(typeWriter, 10);
     } else {
-      setTimeout(typeWriterLoop, 3000);
+      setTimeout(typeWriterLoop, 10000);
     }
   }
 
